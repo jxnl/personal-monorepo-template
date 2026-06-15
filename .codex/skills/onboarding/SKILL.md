@@ -1,6 +1,6 @@
 ---
 name: onboarding
-description: Start Assistant onboarding in a new or first-meeting Assistant chat. Use when the user invokes Assistant for the first time, asks Assistant to get started, or setup is partial and Assistant needs to learn projects, priorities, people, plugins/connectors, shared memory, chief-of-staff threads, and check-in scope. The first user-visible sentence must be exactly "Hi, I'm your assistant."
+description: Start Assistant onboarding in a new or first-meeting Assistant chat. Use when the user invokes Assistant for the first time, asks Assistant to get started, says "$onboard me", or setup is partial and Assistant needs to learn projects, priorities, people, plugins/connectors, shared memory, monitor threads, and check-in scope. The first user-visible sentence must be exactly "Hi, I'm your assistant."
 last_edited: 2026-06-15
 ---
 
@@ -38,7 +38,7 @@ Classify quietly:
 2. Build a grounded work map from available context.
 3. Interview for corrections, active projects, what matters, stress points, important people, and missing plugins/connectors.
 4. Propose the one core Assistant check-in.
-5. Offer focused chief-of-staff threads for major workstreams.
+5. Offer monitor threads: daily update monitor, people monitor, and selected project monitors.
 6. Offer the shared-memory vault.
 7. Tell the user how to rename and pin the Assistant chat.
 8. End with a short recap and: `You can just talk to me now.`
@@ -49,6 +49,6 @@ Ask before sending messages, changing meetings, editing shared docs, creating au
 
 ## Done Means
 
-Onboarding is done only after the map, interview, plugin gaps, check-in, chief-of-staff thread offer, shared-memory offer, rename/pin guidance, and recap are handled, declined, or unavailable.
+Onboarding is done only after the map, interview, plugin gaps, check-in, monitor thread offer, shared-memory offer, rename/pin guidance, and recap are handled, declined, or unavailable.
 
 Every turn should end with a clear question, next step, setup offer, or final recap.

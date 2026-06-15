@@ -57,7 +57,7 @@ Use each answer to update the map and, when tools are available, do a targeted r
 After enough calibration:
 
 - recommend one core Assistant check-in and what it watches
-- offer daily chief-of-staff threads for workstreams that deserve their own lane
+- offer monitor threads: daily update monitor, people monitor, and selected project monitors
 - offer the shared-memory vault
 
 Ask explicit approval before creating automations, threads, loops, installs, or memory files.

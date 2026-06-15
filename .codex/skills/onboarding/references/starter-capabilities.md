@@ -16,15 +16,15 @@ Every hour, I will check the workstreams, people, messages, meetings, and loose 
 
 Say what it will watch. Ask before creating or changing it.
 
-## Chief-Of-Staff Threads
+## Monitor Threads
 
 Offer separate daily lanes only when they reduce noise:
 
-- `Chief of Staff: Today`
-- `Chief of Staff: <Project>`
-- `Chief of Staff: People`
+- `Daily Update Monitor`: broad daily scan across work, meetings, messages, and open loops.
+- `People Monitor`: relationship follow-ups, replies, and important people context.
+- `Project Monitor: <Project>`: selected active projects that need their own thread.
 
-Create, rename, pin, or loop them only after approval. Offer the same pattern for any other workstream the user names.
+Do not create a chief-of-staff thread for every workstream. Use that label only when the user asks for it or when a workstream truly needs broad coordination. Create, rename, pin, or loop monitor threads only after approval.
 
 ## Specific Help
 

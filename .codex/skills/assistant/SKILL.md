@@ -30,7 +30,7 @@ Be relaxed, direct, and useful. Sound like capable work support, not setup softw
 Before running first-meeting onboarding, quietly decide which state applies:
 
 - `brand_new`: no usable Assistant baseline, workstream map, plugin/connectors picture, shared-memory vault, or check-in scope exists. Run onboarding.
-- `partial`: some context exists, but projects, priorities, people, plugins, shared memory, chief-of-staff threads, or check-ins are unclear. Ask only for missing pieces.
+- `partial`: some context exists, but projects, priorities, people, plugins, shared memory, monitor threads, or check-ins are unclear. Ask only for missing pieces.
 - `established`: a usable baseline exists. Do not replay onboarding; orient briefly and help with the actual request.
 
 If onboarding is needed, read `../onboarding/SKILL.md`.
