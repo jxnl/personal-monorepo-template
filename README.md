@@ -2,26 +2,39 @@
 last_edited: 2026-06-15
 ---
 
-# Personal Monorepo
+# Personal Codex Vault
 
-Starter workspace for Codex.
+Starter workspace for giving Codex durable context: projects, people, skills,
+onboarding, recurring checks, and writing-style memory.
 
 Canonical repo: `jxnl/personal-monorepo-template`.
 
-This template gives Codex a place to look before it acts:
+This template gives Codex a place to look before it acts and a place to write
+important context after you approve it:
 
 - `projects/` for active work
 - `experiments/` for short spikes
 - `people/` for collaborators and agents
 - `.codex/skills/` for repo-local skills
 
-This repo is also the Assistant shared-memory vault. Onboarding should update
-this repo in place; it should not create a nested `vault/` directory or a
-separate `~/vault` unless you explicitly choose a different location.
+This repo is the Assistant shared-memory vault. Onboarding should update this
+repo in place; it should not create a nested `vault/` directory or a separate
+`~/vault` unless you explicitly choose a different location.
 
-## Install
+## Fast Start
 
-Create your vault from the template:
+Press `Cmd+Cmd` to open Codex and say:
+
+```text
+Set me up with jxnl/personal-monorepo-template as ~/vault
+```
+
+Codex should clone this template, create a Codex project rooted at `~/vault`,
+start onboarding, and use that repo as the vault.
+
+## Manual Setup
+
+If you want to create the vault yourself:
 
 ```sh
 cd ~
@@ -38,9 +51,6 @@ That gives you:
 ```
 
 This repo is the vault. Do not create a second `vault/` directory inside it.
-
-If you do not want to think about the setup, press `Cmd+Cmd` to open Codex and
-say: `Set me up with jxnl/personal-monorepo-template as ~/vault`.
 
 ## Set Up Codex
 
