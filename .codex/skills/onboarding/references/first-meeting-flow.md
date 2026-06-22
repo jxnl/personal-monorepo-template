@@ -26,6 +26,10 @@ Decide quietly:
 
 Check chat context, repo docs, connected tools, existing check-ins, existing threads, and any real memory or vault surface.
 
+Treat the personal monorepo root as the shared-memory vault. Do not create a
+new nested `vault/` directory or default to `~/vault` while onboarding inside
+this template.
+
 ## 3. First Map
 
 When context exists, read before asking the user to steer. Return a concise map:
@@ -36,6 +40,7 @@ When context exists, read before asking the user to steer. Return a concise map:
 - important people and places
 - useful plugin/connector gaps
 - what is uncertain
+- durable files that should likely be created or updated in this repo
 
 If context is thin, say so and begin the interview.
 
@@ -57,8 +62,9 @@ Use each answer to update the map and, when tools are available, do a targeted r
 After enough calibration:
 
 - recommend one core Assistant check-in and what it watches
-- offer monitor threads: daily update monitor, people monitor, and selected project monitors
-- offer the shared-memory vault
+- offer monitor threads for daily updates, important people, and selected projects; default to 9:00 AM and 4:00 PM check-ins in the user's timezone unless the user asks for different timing
+- offer the shared-memory vault, explaining that this repo is the vault and will be updated in place
+- propose the specific people files, project packets, and agent instructions that should be written from the connector scans and interview
 
 Ask explicit approval before creating automations, threads, loops, installs, or memory files.
 

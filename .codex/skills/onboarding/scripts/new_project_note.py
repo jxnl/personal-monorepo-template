@@ -13,6 +13,10 @@ from pathlib import Path
 ACTIVE_PACKETS_HEADING = "## Active packets"
 
 
+def default_vault_dir() -> Path:
+    return Path(__file__).resolve().parents[4]
+
+
 def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", value or "").strip()
 
@@ -25,7 +29,11 @@ def normalize_slug(value: str) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create and list a new project packet.")
-    parser.add_argument("--vault-dir", default=str(Path.home() / "vault"), help="Vault root path.")
+    parser.add_argument(
+        "--vault-dir",
+        default=str(default_vault_dir()),
+        help="Vault root path. Defaults to the personal monorepo root containing this script.",
+    )
     parser.add_argument("--title", required=True, help="Human-readable project title.")
     parser.add_argument(
         "--slug",

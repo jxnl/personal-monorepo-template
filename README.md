@@ -15,6 +15,10 @@ This template gives Codex a place to look before it acts:
 - `people/` for collaborators and agents
 - `.codex/skills/` for repo-local skills
 
+This repo is also the Assistant shared-memory vault. Onboarding should update
+this repo in place; it should not create a nested `vault/` directory or a
+separate `~/vault` unless you explicitly choose a different location.
+
 ## Install
 
 Install the current packaged version:
@@ -73,8 +77,9 @@ It should:
 - ask who Codex should know about
 - check whether useful plugins are missing
 - offer thread automations for recurring checks
-- offer a daily update monitor, people monitor, and project monitors where useful
-- offer shared-memory setup if you want durable context outside one chat
+- offer a daily update monitor, people monitor, and project monitors where useful, defaulting to 9:00 AM and 4:00 PM check-ins in your timezone
+- offer shared-memory setup by using this repo as the vault
+- proactively propose `people/*.md`, project packets, and `AGENTS.md` updates after scanning connected Slack, email, calendar, docs, project trackers, and GitHub context
 
 Assistant should ask before sending messages, changing meetings, editing shared docs, creating automations, creating, pinning, renaming, or looping threads, installing plugins, or writing shared memory.
 

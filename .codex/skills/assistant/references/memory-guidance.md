@@ -51,6 +51,10 @@ local Memories. When the user approves vault setup, Assistant may create or
 update the plain-file vault described in
 `../../onboarding/references/shared-memory-vault.md`.
 
+In this template, the personal monorepo root is that vault. Use the repo in
+place; do not create a nested `vault/` directory or a separate `~/vault` unless
+the user explicitly chose a different path.
+
 Use the vault for durable, reviewable work context outside one chat:
 
 - the user profile and operating guidance
@@ -58,6 +62,7 @@ Use the vault for durable, reviewable work context outside one chat:
 - rolling workstream packets
 - cross-workstream follow-ups and open loops
 - daily context only when it is worth resuming later
+- repo-local `AGENTS.md` routing rules that make future work easier to place
 
 Do not treat the vault as permission to dump raw messages, transcripts, source
 exports, or every inference into files. The same durable-memory discipline
@@ -72,6 +77,7 @@ Capture:
 - the user's calibration, correction, stress/overhead patterns, and important-people guidance
 - additions or corrections the user gives after Assistant proposes what the hourly check-in will watch
 - the first help recommendation and any recurring-help decisions
+- monitor-thread decisions, including accepted 9:00 AM and 4:00 PM check-ins or any timing the user chose instead
 
 Use recurring evidence from roughly the last 90 days when sources support it. Keep recent pressure separate from durable identity and context.
 
@@ -85,6 +91,8 @@ For people:
 - prefer resolved profile or directory facts over display-name guesses when people tools are available
 - keep relationship reads provisional when evidence is inferential
 - do not preserve a person from one incidental mention plus a profile lookup
+- after Slack, email, calendar, docs, and project scans, proactively propose people notes for recurring collaborators, decision makers, reports, customers, partners, or other people who materially shape the user's work
+- after approval, create or update the relevant `people/*.md` files directly in the vault
 
 For channels and shared spaces:
 

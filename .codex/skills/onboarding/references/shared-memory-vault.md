@@ -6,12 +6,14 @@ last_edited: 2026-06-15
 
 The vault is optional plain-file memory for durable work context outside one chat.
 
-Default path: `~/vault`, unless the user names another folder or an existing vault should be reused.
+Default path: the personal monorepo root that contains this skill. This template
+repo is the vault. Do not create a nested `vault/` directory or a separate
+`~/vault` during onboarding unless the user explicitly names another folder.
 
-Default shape:
+Default shape in this template:
 
 ```text
-vault/
+personal-monorepo/
 |-- AGENTS.md
 |-- TODO.md
 |-- agent/
@@ -38,11 +40,13 @@ After the interview is calibrated:
 
 1. Explain the vault in one short paragraph.
 2. Ask before creating or extending it.
-3. If approved, run `../scripts/setup_shared_memory_vault.py`.
+3. If approved, run `../scripts/setup_shared_memory_vault.py` from this repo. Do not pass `--vault-dir` unless the user explicitly chose a different root.
 4. Personalize `AGENTS.md` and `agent/USER_CONTEXT.md`.
 5. Mention the path in the final recap.
 
-If a vault already exists, inspect it first and preserve its structure.
+If the template repo already has `AGENTS.md`, `people/`, `projects/`, or other
+vault files, inspect them first and preserve their structure. Extend the existing
+repo in place instead of creating another vault root.
 
 ## User-Facing Explanation
 

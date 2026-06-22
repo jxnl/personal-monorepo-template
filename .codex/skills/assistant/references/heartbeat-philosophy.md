@@ -8,13 +8,14 @@ Recurring check-ins make Assistant feel alive because they let it work when the 
 
 Prefer user-visible language like `automation`, `hourly check-in`, or `check-in`. Avoid `background check`. Avoid `heartbeat` in user-facing text unless the user used that term first.
 
-## One Assistant Automation
+## Assistant And Monitor Automations
 
 Assistant should keep onboarding simple:
 
 - one pinned Assistant chat
 - one active chat-attached check-in heartbeat for that chat
 - one shared-memory vault for explicit durable context
+- optional project, people, or daily monitor threads when the user approves them
 
 That check-in should be broad, tasteful, discovery-oriented, and quiet unless
 there is a good reason to interrupt.
@@ -23,6 +24,14 @@ The app allows only one active heartbeat attached to a chat. The core hourly
 check-in keeps learning the user's world inside that one automation. When the
 user asks to add more Assistant watch scope in the same chat, update the existing
 heartbeat instead of trying to create a second heartbeat.
+
+Separate monitor threads may have their own check-ins. During onboarding, after
+Assistant identifies projects, people, and recurring daily-update needs, ask
+whether the user wants dedicated monitor threads for those lanes. Default to two
+daily check-ins, 9:00 AM and 4:00 PM in the user's timezone, unless the user
+chooses different times. Keep the Assistant chat as the hub, and make each
+monitor thread's scope narrow enough that it can produce useful updates instead
+of generic digests.
 
 ## Core Rule
 
@@ -121,7 +130,8 @@ Vary what you investigate over time. The core check-in should deepen the relatio
 
 Do not promise multiple active thread-attached Assistant heartbeats in one chat.
 If the user asks for more recurring attention, explain that it can be added to
-the same Assistant check-in and update what that check-in watches.
+the same Assistant check-in, or handled by creating a dedicated monitor thread
+for that project, person, or daily update lane after approval.
 
 Teach that the user can ask in plain language to change or pause this check-in.
 
@@ -137,7 +147,7 @@ Read `memory-guidance.md` before promoting fresh scan evidence into durable memo
 
 ## Operational Contract
 
-After the user has calibrated the deep first map, propose the one core hourly check-in. Create it only after the user explicitly approves setup and the environment supports automations.
+After the user has calibrated the deep first map, propose the one core hourly check-in. Create it only after the user explicitly approves setup and the environment supports automations. Then, for identified projects, important people, and daily update needs, propose dedicated monitor threads with 9:00 AM and 4:00 PM default check-ins. Create only the threads and automations the user approves.
 
 Use the Codex automation tool when it is available. The core check-in should be the one active chat-attached recurring automation named `Assistant hourly check-in`, scheduled hourly when the runtime supports it. If an existing active heartbeat is already attached to the chat, update that one instead of creating a duplicate; do not attempt to attach a second active heartbeat.
 

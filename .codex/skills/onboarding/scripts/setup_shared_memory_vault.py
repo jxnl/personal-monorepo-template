@@ -8,6 +8,10 @@ import json
 from pathlib import Path
 
 
+def default_vault_dir() -> Path:
+    return Path(__file__).resolve().parents[4]
+
+
 ROOT_AGENTS_TEMPLATE = """# AGENTS.md
 
 ## Shared Memory Goal
@@ -179,7 +183,11 @@ def ensure_file(path: Path, content: str, created_files: list[str], dry_run: boo
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Set up Assistant shared-memory vault files.")
-    parser.add_argument("--vault-dir", default=str(Path.home() / "vault"), help="Vault root path.")
+    parser.add_argument(
+        "--vault-dir",
+        default=str(default_vault_dir()),
+        help="Vault root path. Defaults to the personal monorepo root containing this script.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print planned actions without writing.")
     return parser.parse_args()
 

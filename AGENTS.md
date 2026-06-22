@@ -39,11 +39,23 @@ Keep important context on disk:
 
 Do not leave decisions only in chat when they will matter later.
 
+This repository is the shared-memory vault. When Assistant onboarding, a repo-local
+skill, or a helper script refers to "the vault", use this repository root as the
+vault root by default. Do not create a nested `vault/` directory or a separate
+`~/vault` unless Jason explicitly asks for a different location.
+
+Assistant is expected to keep this vault current after explicit approval. That
+includes updating root and project `AGENTS.md` files, project `README.md` files,
+`people/*.md`, `TODO.md`, and agent context files when connector scans, user
+corrections, or recurring check-ins reveal durable information worth preserving.
+Prefer updating the canonical existing file over creating adjacent notes.
+
 ## Working On Projects
 
 - Use `projects/` for long-lived work and `experiments/` for short-lived spikes.
 - When creating a new project, use `.codex/skills/new-project` or follow `templates/project_README.md` and `templates/PROJECT_AGENTS.md`.
 - When creating a new person note, use `.codex/skills/new-person` or follow `people/person.md`.
+- During Assistant onboarding, after scanning connected Slack, email, calendar, docs, project trackers, and GitHub context, proactively propose the people files and project packets that should be created or updated. Ask for approval, then write the approved files directly in this repo.
 - Update the relevant project or experiment `README.md` when adding, archiving, renaming, or changing the status of work.
 - Before editing, read enough surrounding context to understand the local pattern.
 - Keep changes small and reversible unless Jason explicitly asks for a larger reshaping.
