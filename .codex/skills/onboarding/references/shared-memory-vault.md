@@ -1,61 +1,36 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-22
 ---
 
 # Shared Memory Vault
 
-The vault is optional plain-file memory for durable work context outside one chat.
+The personal monorepo is Assistant's optional, reviewable shared memory. Use the repository root in place; do not create a nested vault or another default root.
 
-Default path: the personal monorepo root that contains this skill. This template
-repo is the vault. Do not create a nested `vault/` directory or a separate
-`~/vault` during onboarding unless the user explicitly names another folder.
-
-Default shape in this template:
+## Separation Of Concerns
 
 ```text
-personal-monorepo/
-|-- AGENTS.md
-|-- TODO.md
-|-- agent/
-|   `-- USER_CONTEXT.md
-|-- people/
-|-- projects/
-|-- notes/
-`-- sources/
+agent/ASSISTANT_SETUP.md  operational onboarding state
+agent/USER_CONTEXT.md     durable user context and preferences
+people/                   recurring collaborators
+projects/                 durable workstream packets
+notes/                    useful material without a canonical project or person owner
+sources/                  retained evidence, read-only by default
 ```
 
-Use it for:
-
-- the user's working profile
-- durable projects and workstreams
-- important people
-- open loops and decisions
-- source routes future Assistant chats should know
-
-Do not use it for raw email/chat dumps, one-off names, weak guesses, or activity logs.
+`AGENTS.md` owns stable routing and behavior. `TODO.md` is for cross-workstream follow-ups that should survive beyond one chat.
 
 ## Setup
 
-After the interview is calibrated:
+After the user approves the memory portion of the onboarding batch:
 
-1. Explain the vault in one short paragraph.
-2. Ask before creating or extending it.
-3. If approved, run `../scripts/setup_shared_memory_vault.py` from this repo. Do not pass `--vault-dir` unless the user explicitly chose a different root.
-4. Personalize `AGENTS.md` and `agent/USER_CONTEXT.md`.
-5. Mention the path in the final recap.
+1. Run `../scripts/setup_shared_memory_vault.py` from this repository. Pass `--vault-dir` only when the user chose another root.
+2. Preserve every existing file; the script creates missing scaffolding only.
+3. Personalize only the approved files.
+4. Read back each claimed write.
+5. Mark the corresponding setup states complete only after readback succeeds.
 
-If the template repo already has `AGENTS.md`, `people/`, `projects/`, or other
-vault files, inspect them first and preserve their structure. Extend the existing
-repo in place instead of creating another vault root.
+## What Belongs
 
-## User-Facing Explanation
+Keep durable goals, responsibilities, preferences, decisions, owners, source routes, important collaborators, and open loops. Exclude raw communication dumps, temporary status, weak guesses, and broad connected-source inventories.
 
-```md
-**Shared Memory**
-
-This chat is where we talk. The check-in is what brings me back. The vault is the plain-file memory I maintain so durable work context does not live only inside one chat.
-
-**Question**
-
-Want me to set that up?
-```
+Updating the vault is not permission to send messages, edit shared systems, or take another external action.

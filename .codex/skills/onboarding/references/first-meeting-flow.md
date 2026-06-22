@@ -1,89 +1,61 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-22
 ---
 
-# First-Meeting Flow
+# Quick-First Onboarding Flow
 
-Make this feel like a capable assistant saying hello, not a setup wizard.
+This file owns onboarding state, transitions, completion, and user-facing next actions. Resume at the first incomplete step in `agent/ASSISTANT_SETUP.md`.
 
-## 1. Hello
+## Step 1: Orient
 
-Start with exactly:
+- **State:** `workspace_map`
+- Read only the default workspace and thread sources from `../SKILL.md`; use the thread-management skill for read-only thread discovery.
+- If the user arrived with a real task, begin that work before continuing setup.
+- Do not broaden into connected sources because they are available.
+- Complete when there is enough evidence for a short map of active work, likely priorities, and uncertain areas.
 
-```text
-Hi, I'm your assistant.
-```
+## Step 2: Show The Map
 
-Then say briefly that you will learn the user's work and where you can help.
+- Return a compact map: current projects, relevant existing threads, what appears important, and what remains uncertain.
+- Keep the map provisional. Do not write it to memory yet.
+- Complete when the user has seen a concrete first read rather than a generic capability list.
 
-## 2. Setup State
+## Step 3: Calibrate
 
-Decide quietly:
+- **State:** `user_calibration`
+- Ask one question at a time and no more than three questions total.
+- Prefer, in order: what the map got wrong; what matters soon; which work should be coordinated in separate threads.
+- Stop asking once the remaining ambiguity would not change the setup batch.
+- Complete when the user has corrected the map or accepts it as useful enough.
 
-- `brand_new`: run the whole flow.
-- `partial`: ask only for missing setup pieces.
-- `established`: skip onboarding and help with the request.
+## Step 4: Propose One Batch
 
-Check chat context, repo docs, connected tools, existing check-ins, existing threads, and any real memory or vault surface.
+- **States:** `memory`, `thread_topology`, `check_in`
+- Show one reviewable proposal containing only applicable actions:
+  - files to create or update and the durable meaning each will preserve;
+  - up to three proposed satellite threads, including reuse, names, pins, and scope;
+  - one optional hub check-in at 9:00 AM and 4:00 PM on weekdays in the user's timezone;
+  - targeted connected-source enrichment, only when tied to a named gap.
+- State clearly that no action has happened yet.
+- Complete when the user approves, edits, or declines the batch.
 
-Treat the personal monorepo root as the shared-memory vault. Do not create a
-new nested `vault/` directory or default to `~/vault` while onboarding inside
-this template.
+## Step 5: Apply And Verify
 
-## 3. First Map
+- Mark setup `in_progress` before applying an approved batch.
+- Use the shared-memory reference for files and the thread-management skill for threads.
+- Preserve existing files and reuse existing threads.
+- Read back every claimed file, title, pin, and automation state.
+- Record each state as `complete`, `declined`, or `unavailable`; do not leave an approved action marked complete after a failed write or readback.
 
-When context exists, read before asking the user to steer. Return a concise map:
+## Step 6: Close Or Deepen
 
-- who the user seems to be
-- active projects and workstreams
-- what matters now
-- important people and places
-- useful plugin/connector gaps
-- what is uncertain
-- durable files that should likely be created or updated in this repo
+- Set setup status to `ready` when all required states are resolved.
+- Recap the map, verified setup, and how Assistant will help now.
+- Offer at most one targeted enrichment action when it has a concrete payoff.
+- If the user declines or stops, leave onboarding complete and continue through ordinary work.
 
-If context is thin, say so and begin the interview.
+## Guided Continuation
 
-## 4. Interview
+While status is `brand_new` or `in_progress`, finish or present the next incomplete high-value step. Do not replay completed steps, repeat the last recap, or force an optional branch. A normal user request can pause onboarding; help with it and then resume only when setup is relevant again.
 
-Ask one open question at a time. Cover:
-
-- what you got wrong
-- active, paused, background, and ignored work
-- what matters soon
-- stress and dropped-ball patterns
-- important people
-- missing plugins/connectors
-
-Use each answer to update the map and, when tools are available, do a targeted reread.
-
-## 5. Setup Offers
-
-After enough calibration:
-
-- recommend one core Assistant check-in and what it watches
-- offer monitor threads for daily updates, important people, and selected projects; default to 9:00 AM and 4:00 PM check-ins in the user's timezone unless the user asks for different timing
-- offer `write-like-me-bootstrap` when Slack and email scans include enough authored messages to infer the user's writing postures
-- offer the shared-memory vault, explaining that this repo is the vault and will be updated in place
-- propose the specific people files, project packets, and agent instructions that should be written from the connector scans and interview
-
-Ask explicit approval before creating automations, threads, loops, installs, or memory files.
-
-The write-like-me offer should be concrete and optional:
-
-```text
-I can also bootstrap a write-like-me skill from your sent email and Slack messages, split by posture like quick replies, pushback, delegation, intros, and status updates. Want me to do that?
-```
-
-## 6. Close
-
-Give rename/pin guidance and a short recap:
-
-- `**Here Is The Map I Am Carrying**`
-- `**How I Will Help**`
-- `**What I Set Up**`
-- `**Shared Memory**`
-- `**Keep This Handy**`
-- `**You Can Just Talk To Me Now**`
-
-Do not end completed onboarding with another configuration question.
+When the user wants a reusable writing voice and has approved access to enough authored messages or email, `write-like-me-bootstrap` is one valid targeted enrichment action. Show the inferred posture preview and ask again before writing the generated skill. Declining or deferring it does not reopen onboarding.

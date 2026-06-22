@@ -1,4 +1,4 @@
 interface:
   display_name: "Assistant Onboarding"
-  short_description: "Meet Assistant and set up useful work memory."
-  default_prompt: "Help me get started with Assistant."
+  short_description: "Set up Assistant from your workspace and threads"
+  default_prompt: "Set up a lightweight Assistant from this workspace and my existing Codex threads."

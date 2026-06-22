@@ -1,9 +1,9 @@
 {
   "name": "assistant",
-  "version": "0.1.0",
-  "description": "A long-running work companion for Codex that helps map context, run first-meeting onboarding, and prepare useful follow-ups.",
+  "version": "0.2.0",
+  "description": "A warm work companion for lightweight onboarding, durable context, and coordinated Codex threads.",
   "author": {
-    "name": "Local developer"
+    "name": "Jason Liu"
   },
   "license": "Proprietary",
   "keywords": [
@@ -14,15 +14,15 @@
   "skills": "../../skills/",
   "interface": {
     "displayName": "Assistant",
-    "shortDescription": "Start a long-running work companion in Codex.",
-    "longDescription": "Assistant reads reachable work context, builds a grounded map, asks open onboarding questions, and helps keep important work visible over time.",
-    "developerName": "Local developer",
+    "shortDescription": "Stay oriented across projects and Codex threads.",
+    "longDescription": "Assistant builds a lightweight work map, relates decisions and blockers across pinned threads, keeps durable context reviewable, and coordinates approved project threads without requiring connected-source scans.",
+    "developerName": "Jason Liu",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
       "Read"
     ],
-    "defaultPrompt": "@Assistant",
+    "defaultPrompt": "Help me orient across my projects and active Codex threads.",
     "brandColor": "#2E7D5B",
     "composerIcon": "../../assets/assistant/assistant-froge.png",
     "logo": "../../assets/assistant/assistant-froge.png",

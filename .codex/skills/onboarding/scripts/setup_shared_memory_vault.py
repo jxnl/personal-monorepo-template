@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import date
 from pathlib import Path
 
 
@@ -24,7 +25,7 @@ user's repos, docs, email, or chat systems.
 
 ## User Snapshot
 
-Assistant should personalize this section from the first meeting and keep it
+Assistant should personalize this section from the calibrated onboarding map and keep it
 current when the user's durable work shape changes.
 
 - User:
@@ -39,7 +40,7 @@ Prefer the best current evidence available for the task:
 
 1. Existing vault notes and canonical packets
 2. The user's current self-report and corrections
-3. Connected work context such as messages, email, calendar, docs, and project systems when available
+3. Approved connected work context when it materially improves the current task
 4. Current chat context and artifacts
 
 Use absolute dates. Separate facts, self-report, and inference when that
@@ -51,8 +52,8 @@ distinction changes how future work should read the note.
 - Prefer updating existing canonical notes before creating adjacent notes.
 - Route TODOs, people, projects, daily summaries, and scratch notes explicitly.
 - Preserve decisions, blockers, owners, dates, useful links, and open loops.
-- In people notes, keep confirmed Slack handles, email addresses, teams, relationship context, collaboration guidance, and dated evidence.
-- In project packets, keep owners and open loops in `README.md`; keep recurring Slack, DM, email, document, meeting, or repository routes in the nearest `AGENTS.md`.
+- In people notes, keep confirmed identifiers, roles, relationship context, collaboration guidance, and dated evidence.
+- In project packets, keep owners and open loops in `README.md`; keep recurring communication, document, meeting, tracker, or repository routes in the nearest `AGENTS.md`.
 - Keep raw source dumps, secrets, and noisy transcripts out of canonical notes.
 - Do not send messages, reply to email, change meetings, edit shared documents, create automations, or write shared memory unless the user explicitly approves that specific action.
 - If nothing meaningful changed, do not churn the vault.
@@ -130,6 +131,36 @@ This note is Assistant's durable working profile for the user.
 """
 
 
+def assistant_setup_template() -> str:
+    today = date.today().isoformat()
+    return f"""---
+title: Assistant Setup
+status: brand_new
+workspace_map: pending
+user_calibration: pending
+memory: pending
+thread_topology: pending
+check_in: pending
+optional_enrichment: not_requested
+updated_at: {today}
+---
+
+# Assistant Setup
+
+This file tracks operational setup progress. Durable user context belongs in
+`USER_CONTEXT.md`.
+
+## Approved Thread Topology
+
+- Hub:
+- Satellites:
+
+## Notes
+
+- Record only setup decisions, verified thread state, and deferred setup work.
+"""
+
+
 PROJECTS_README_TEMPLATE = """# Projects
 
 This folder holds pages for ongoing projects.
@@ -155,7 +186,7 @@ This folder holds canonical rolling project packets.
 ## Defaults
 
 - Prefer updating an existing canonical packet over creating an adjacent status note.
-- Keep recurring Slack, DM, email, document, meeting, and repository inputs in the nearest packet `AGENTS.md`.
+- Keep recurring communication, document, meeting, tracker, and repository inputs in the nearest packet `AGENTS.md`.
 - Keep current status and one-off evidence links in the packet `README.md`.
 - Use absolute dates and label inference when it matters.
 """
@@ -211,6 +242,12 @@ def main() -> int:
         args.dry_run,
     )
     ensure_file(
+        vault_dir / "agent" / "ASSISTANT_SETUP.md",
+        assistant_setup_template(),
+        created_files,
+        args.dry_run,
+    )
+    ensure_file(
         vault_dir / "projects" / "README.md",
         PROJECTS_README_TEMPLATE,
         created_files,
@@ -230,7 +267,8 @@ def main() -> int:
         "created_dirs": created_dirs,
         "created_files": created_files,
         "next_steps": [
-            "Personalize AGENTS.md and agent/USER_CONTEXT.md from the calibrated first meeting.",
+            "Build a quick workspace and thread map, then update agent/ASSISTANT_SETUP.md.",
+            "Personalize AGENTS.md and agent/USER_CONTEXT.md only after approval.",
             "Propose initial person notes and project packets, then create only explicitly approved items.",
             "Treat sources/ as read-only by default when retaining imported evidence.",
         ],

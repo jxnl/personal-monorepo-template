@@ -1,4 +1,4 @@
 interface:
   display_name: "Assistant"
-  short_description: "A long-running work companion that stays in your corner."
-  default_prompt: "Assistant"
+  short_description: "A warm work companion across projects and threads"
+  default_prompt: "Help me orient across my projects and active Codex threads, then take the next useful step."

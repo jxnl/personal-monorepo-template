@@ -1,74 +1,45 @@
 ---
 name: onboarding
-description: Start Assistant onboarding in a new or first-meeting Assistant chat. Use when the user invokes Assistant for the first time, asks Assistant to get started, says "$onboard me", or setup is partial and Assistant needs to learn projects, priorities, people, plugins/connectors, shared memory, monitor threads, and check-in scope. The first user-visible sentence must be exactly "Hi, I'm your assistant."
-last_edited: 2026-06-15
+description: Set up or resume Assistant from a workspace and the user's existing Codex threads. Use when the user asks to get started, invokes onboarding, has missing Assistant setup state, or needs a lightweight work map, shared memory, thread topology, and optional check-in without a broad connected-source scan.
+last_edited: 2026-06-22
 ---
 
 # Assistant Onboarding
 
-First visible sentence:
+Build the smallest useful Assistant setup, verify it, and let the relationship deepen through real work. Use a short, natural introduction appropriate to the request; do not require a scripted greeting.
 
-```text
-Hi, I'm your assistant.
-```
+## Skill Configuration
 
-Keep it human: read the room, show the map, ask one good question at a time, and ask approval before doing setup.
+### Default Sources
 
-## Read First
+Start with the repository and Codex threads:
 
-Read `references/first-meeting-flow.md`.
+- root and nearest `README.md` and `AGENTS.md` files;
+- `projects/`, `experiments/`, and `people/` indexes when present;
+- `agent/ASSISTANT_SETUP.md` and `agent/USER_CONTEXT.md` when present;
+- summaries from at most five relevant pinned or recent threads.
 
-Use only as needed:
+Do not inspect messages, email, calendar, documents, trackers, or other connected sources during the default pass. Offer a targeted read later only when it would resolve a named gap or unlock a concrete workflow.
 
-- `references/question-bank.md`
-- `references/starter-capabilities.md`
-- `references/shared-memory-vault.md`
+### State And Approval
 
-## Setup State
+`agent/ASSISTANT_SETUP.md` owns operational progress. Durable user context stays in `agent/USER_CONTEXT.md`. Do not merge setup bookkeeping into user memory.
 
-Classify quietly:
+Before writing memory, creating automations, or creating, renaming, pinning, or unpinning threads, show one concrete batch and receive approval. That approval covers only the displayed batch.
 
-- `brand_new`: no useful Assistant baseline. Run the full first meeting.
-- `partial`: some context exists, but projects, priorities, people, plugins, memory, threads, or check-ins are missing. Fill the gaps.
-- `established`: a useful baseline exists. Skip onboarding and help.
+## Workflow
 
-## Full Flow
+Read and follow `references/first-meeting-flow.md`. It is the canonical owner of onboarding phases, resume behavior, completion criteria, and next actions.
 
-1. Start with the exact hello.
-2. Build a grounded work map from available context.
-3. Interview for corrections, active projects, what matters, stress points, important people, and missing plugins/connectors.
-4. Propose the one core Assistant check-in.
-5. After identifying projects and important people, ask whether to create monitor threads for selected projects, people, or daily updates. Default suggested check-ins are 9:00 AM and 4:00 PM in the user's timezone unless the user chooses different times.
-6. After Slack and email scans are available, suggest running `write-like-me-bootstrap` to create a reusable writing-style skill from the user's authored messages.
-7. Offer the shared-memory vault.
-8. Tell the user how to rename and pin the Assistant chat.
-9. End with a short recap and: `You can just talk to me now.`
+Load these only when the matching branch is reached:
 
-## Approval Gates
-
-Ask before sending messages, changing meetings, editing shared docs, creating automations, installing plugins, creating/pinning/renaming threads, adding loops, or writing shared memory.
-
-## Vault Default
-
-This personal monorepo is the shared-memory vault. During onboarding, use the
-repo root as the vault root and update it in place after approval. Do not create
-a nested `vault/` directory or default to `~/vault` unless the user explicitly
-asks for a separate location.
-
-After scanning connected Slack, Gmail or email, calendar, docs, project trackers,
-GitHub, and other available connectors, proactively identify people and projects
-that deserve durable notes. Propose the specific `people/*.md`, project packets,
-and `AGENTS.md` updates to write; after approval, create or update those files in
-this repo.
-
-Also look for enough authored Slack and email messages to infer the user's
-writing postures. When useful, offer to run `.codex/skills/write-like-me-bootstrap`
-so Assistant can create a repo-local `write-like-me` skill from the user's own
-sent messages. Ask before scanning deeply for this purpose and ask again before
-writing the generated skill.
+- `references/shared-memory-vault.md` for approved vault setup or extension;
+- `../assistant/references/heartbeat-philosophy.md` for an approved check-in;
+- `../manage-assistant-threads/SKILL.md` for thread discovery and the proposed thread batch.
+- `../write-like-me-bootstrap/SKILL.md` only when the user requests voice learning or approves targeted enrichment from enough authored messages or email.
 
 ## Done Means
 
-Onboarding is done only after the map, interview, plugin gaps, check-in, monitor thread offer, write-like-me bootstrap offer, shared-memory offer, rename/pin guidance, and recap are handled, declined, or unavailable.
+Onboarding is complete when the workspace map, user correction, memory decision, thread decision, and optional check-in decision are resolved, declined, or unavailable. Connected-source enrichment is optional and never blocks completion.
 
-Every turn should end with a clear question, next step, setup offer, or final recap.
+End with the map Assistant is carrying, what was verified, and one useful next move. Do not end completed onboarding with another setup questionnaire.

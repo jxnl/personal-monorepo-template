@@ -1,0 +1,6 @@
+interface:
+  display_name: "Manage Assistant Threads"
+  short_description: "Organize and coordinate Assistant work threads"
+  default_prompt: "Review my active Codex threads and propose a clean Assistant hub and project topology before changing anything."
+policy:
+  allow_implicit_invocation: false
