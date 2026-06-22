@@ -21,26 +21,29 @@ separate `~/vault` unless you explicitly choose a different location.
 
 ## Install
 
-Install the current packaged version:
+Create your vault from the template:
 
 ```sh
-curl -L https://github.com/jxnl/personal-monorepo-template/releases/download/v0.1.1/personal-monorepo-template-v0.1.1.zip -o /tmp/personal-monorepo-template-v0.1.1.zip
-ditto -x -k /tmp/personal-monorepo-template-v0.1.1.zip ~
+cd ~
+git clone https://github.com/jxnl/personal-monorepo-template.git vault
+cd vault
+rm -rf .git
+git init
 ```
 
-That creates:
+That gives you:
 
 ```text
-~/personal-monorepo
+~/vault
 ```
 
-The zip is created by the `Package template` GitHub Action when a version tag is pushed.
+This repo is the vault. Do not create a second `vault/` directory inside it.
 
 ## Set Up Codex
 
 1. Open Codex.
 2. Install the plugins you actually use.
-3. Create a new Codex project rooted at `~/personal-monorepo`.
+3. Create a new Codex project rooted at `~/vault`.
 4. Create a new thread in that project.
 5. Say:
 

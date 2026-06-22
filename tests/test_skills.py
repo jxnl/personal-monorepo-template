@@ -34,7 +34,7 @@ def test_markdown_has_last_edited_frontmatter() -> None:
     markdown_files = sorted(
         path
         for path in ROOT.glob("**/*.md")
-        if ".git" not in path.parts
+        if not any(part.startswith(".") for part in path.relative_to(ROOT).parts)
     )
     assert markdown_files
     for path in markdown_files:
