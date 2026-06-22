@@ -1,5 +1,5 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-22
 ---
 
 # Root Agent Instructions
@@ -46,16 +46,21 @@ vault root by default. Do not create a nested `vault/` directory or a separate
 
 Assistant is expected to keep this vault current after explicit approval. That
 includes updating root and project `AGENTS.md` files, project `README.md` files,
-`people/*.md`, `TODO.md`, and agent context files when connector scans, user
-corrections, or recurring check-ins reveal durable information worth preserving.
+`people/*.md`, `TODO.md`, and agent context files when workspace evidence, user
+corrections, or approved recurring check-ins reveal durable information worth preserving.
 Prefer updating the canonical existing file over creating adjacent notes.
+
+On substantive Assistant orientation and check-in runs, inspect pinned Codex
+thread summaries selectively and relate material decisions, blockers,
+dependencies, owners, deadlines, and artifacts across workstreams. A pin is a
+relevance signal, not proof that a lane is current or approval to steer it.
 
 ## Working On Projects
 
 - Use `projects/` for long-lived work and `experiments/` for short-lived spikes.
 - When creating a new project, use `.codex/skills/new-project` or follow `templates/project_README.md` and `templates/PROJECT_AGENTS.md`.
 - When creating a new person note, use `.codex/skills/new-person` or follow `people/person.md`.
-- During Assistant onboarding, after scanning connected Slack, email, calendar, docs, project trackers, and GitHub context, proactively propose the people files and project packets that should be created or updated. Ask for approval, then write the approved files directly in this repo.
+- During Assistant onboarding, start from this workspace and relevant Codex thread summaries. Propose targeted connected-source reads only when they resolve a named gap. Ask for one batch approval before writing memory or changing thread topology.
 - Update the relevant project or experiment `README.md` when adding, archiving, renaming, or changing the status of work.
 - Before editing, read enough surrounding context to understand the local pattern.
 - Keep changes small and reversible unless Jason explicitly asks for a larger reshaping.
@@ -79,7 +84,7 @@ Use these when relevant:
 
 - GitHub: `gh-address-comments`, `gh-commit`, `gh-fix-ci`, `yeet`
 - Audits: `audit-ai-code`, `audit-ai-frontend`, `audit-ai-writing`
-- Assistant: `assistant`, `onboarding`
+- Assistant: `assistant`, `onboarding`, `manage-assistant-threads`
 - Artifacts: `simple-html-artifact`
 - Goals: `ultragoal`
 - Automations: `loop`

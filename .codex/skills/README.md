@@ -1,5 +1,5 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-22
 ---
 
 # Skills
@@ -16,11 +16,13 @@ Included:
 - `gh-commit`
 - `gh-fix-ci`
 - `loop`
+- `manage-assistant-threads`
 - `new-person`
 - `new-project`
 - `onboarding`
 - `simple-html-artifact`
 - `ultragoal`
+- `write-like-me-bootstrap`
 - `yeet`
 
 Do not put private identity, finance, or account-specific skills in a public template. Add those locally in your own repo if needed.

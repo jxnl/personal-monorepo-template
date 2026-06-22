@@ -1,5 +1,5 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-22
 ---
 
 # Personal Codex Vault
@@ -55,50 +55,55 @@ This repo is the vault. Do not create a second `vault/` directory inside it.
 ## Set Up Codex
 
 1. Open Codex.
-2. Install the plugins you actually use.
-3. Create a new Codex project rooted at `~/vault`.
-4. Create a new thread in that project.
-5. Say:
+2. Create a new Codex project rooted at `~/vault`.
+3. Create a new thread in that project.
+4. Say:
 
 ```text
-$onboard me
+Help me get started with Assistant.
 ```
 
-## Plugins To Install First
-
-Install plugins before onboarding so Assistant can read the right context.
-
-Start with the tools where your work happens:
-
-- Assistant
-- Gmail or Outlook Email
-- Google Calendar or Outlook Calendar
-- Google Drive, Notion, Documents, Spreadsheets, Presentations, or PDF
-- Slack or Teams
-- GitHub, Linear, or Notion for project tracking
-- Browser
-- Chrome
-- Computer Use
-
-For Chrome workflows, install the Chrome plugin and the [Codex Chrome Extension](https://chromewebstore.google.com/detail/codex/hehggadaopoacecdllhhajmbjkdcmajg).
+Assistant starts from this workspace and your existing Codex threads. Connected
+tools are optional and never block setup.
 
 ## What Onboarding Does
 
-Onboarding should explain what it is checking before it checks it.
+The default onboarding is deliberately small:
 
-It should:
+1. Read the workspace and summaries from up to five relevant Codex threads.
+2. Show a provisional map of projects, priorities, and existing thread ownership.
+3. Ask at most three useful questions, one at a time.
+4. Propose memory changes, up to three project or monitor threads, and an optional check-in as one batch.
+5. Apply the approved batch and verify every write, title, pin, and automation.
+6. Offer a targeted connected-source read only when it unlocks something concrete.
 
-- read the workspace
-- ask what projects exist and what matters
-- ask who Codex should know about
-- check whether useful plugins are missing
-- offer thread automations for recurring checks
-- offer a daily update monitor, people monitor, and project monitors where useful, defaulting to 9:00 AM and 4:00 PM check-ins in your timezone
-- offer to bootstrap a `write-like-me` skill from your sent Slack and email writing
-- offer shared-memory setup by using this repo as the vault
-- proactively propose `people/*.md`, project packets, and `AGENTS.md` updates after scanning connected Slack, email, calendar, docs, project trackers, and GitHub context
+Assistant can complete onboarding even when no connected tools are installed.
+Later, it may recommend a message, email, calendar, document, tracker, code-host,
+browser, or computer-control connection when a specific workflow needs one.
 
-Assistant should ask before sending messages, changing meetings, editing shared docs, creating automations, creating, pinning, renaming, or looping threads, installing plugins, or writing shared memory.
+One optional enrichment is `write-like-me-bootstrap`, which can infer distinct writing postures from approved authored-message or email sources and create a private repo-local writing skill. It is never required to finish onboarding.
+
+## Thread Topology
+
+Assistant uses a small hub-and-satellites model:
+
+- `Assistant`: the pinned coordination hub.
+- `Project: <name>`: active project work with a distinct outcome.
+- `Monitor: <scope>`: narrowly scoped recurring observation.
+- `loop: <task>` and `done: <task>`: temporary automation lifecycle names.
+
+Before changing threads, Assistant shows a single reviewable batch covering reuse,
+creation, names, pins, scope, and scheduling. Within an approved topology it may
+read and steer those threads, while external and consequential actions still
+require their own approval.
+
+Pinned threads are Assistant's proactive radar. It reads summaries selectively
+and relates decisions, blockers, dependencies, owners, deadlines, and artifacts
+across them when the connection changes what should happen next.
+
+The optional hub check-in runs at 9:00 AM and 4:00 PM on weekdays in your
+timezone. Satellite threads get their own automation only when they need a
+genuinely different cadence or completion condition.
 
 ## Skills
 
@@ -108,6 +113,7 @@ Useful starting points:
 
 - `onboarding`: first setup
 - `assistant`: ongoing work support after onboarding
+- `manage-assistant-threads`: organize and coordinate the thread topology
 - `loop`: recurring checks on a thread
 - `new-project`: create a project or experiment
 - `new-person`: create a person note
