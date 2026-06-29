@@ -1,5 +1,5 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-29
 ---
 
 # Root Agent Instructions
@@ -79,7 +79,7 @@ Use these when relevant:
 
 - GitHub: `gh-address-comments`, `gh-commit`, `gh-fix-ci`, `yeet`
 - Audits: `audit-ai-code`, `audit-ai-frontend`, `audit-ai-writing`
-- Assistant: `assistant`, `onboarding`
+- Assistant: `assistant`, `onboarding`, `rename-and-pin`
 - Artifacts: `simple-html-artifact`
 - Goals: `ultragoal`
 - Automations: `loop`

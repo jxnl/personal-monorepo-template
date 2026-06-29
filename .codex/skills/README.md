@@ -1,5 +1,5 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-29
 ---
 
 # Skills
@@ -19,6 +19,7 @@ Included:
 - `new-person`
 - `new-project`
 - `onboarding`
+- `rename-and-pin`
 - `simple-html-artifact`
 - `ultragoal`
 - `yeet`

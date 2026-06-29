@@ -1,5 +1,5 @@
 ---
-last_edited: 2026-06-15
+last_edited: 2026-06-29
 ---
 
 # Personal Codex Vault
@@ -111,6 +111,7 @@ Useful starting points:
 - `loop`: recurring checks on a thread
 - `new-project`: create a project or experiment
 - `new-person`: create a person note
+- `rename-and-pin`: rename the current thread to match your existing conventions and pin it
 - `write-like-me-bootstrap`: create a personal writing-style skill from Slack and email
 
 ## Structure
