@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rename and pin"
+  short_description: "Rename and pin the current Codex thread"
+  default_prompt: "Rename this thread to match my other thread titles, then pin it."

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+from datetime import date
 from pathlib import Path
 
 
@@ -39,7 +40,8 @@ def test_markdown_has_last_edited_frontmatter() -> None:
     assert markdown_files
     for path in markdown_files:
         data = frontmatter(path)
-        assert data.get("last_edited") == "2026-06-15", path
+        edited = str(data.get("last_edited", ""))
+        assert date.fromisoformat(edited), path
 
 
 def test_skill_frontmatter_shape() -> None:
@@ -50,7 +52,20 @@ def test_skill_frontmatter_shape() -> None:
         assert set(data) == {"name", "description", "last_edited"}, path
         assert isinstance(data["name"], str) and data["name"]
         assert isinstance(data["description"], str) and data["description"]
-        assert data["last_edited"] == "2026-06-15"
+        assert path.parent.name == str(data["name"]).strip("\"'")
+        assert date.fromisoformat(str(data["last_edited"]))
+
+
+def test_rename_and_pin_inspects_other_threads_before_mutation() -> None:
+    skill = (ROOT / ".codex" / "skills" / "rename-and-pin" / "SKILL.md").read_text()
+
+    list_threads = skill.index("`list_threads`")
+    set_title = skill.index("`set_thread_title`")
+    set_pinned = skill.index("`set_thread_pinned`")
+
+    assert list_threads < set_title < set_pinned
+    assert "inspect the other threads before choosing a title" in skill
+    assert "Preserve every other thread's pin state" in skill
 
 
 def test_onboarding_scripts_default_to_repo_root_vault() -> None:
