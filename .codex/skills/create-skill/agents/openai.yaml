@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Skill"
+  short_description: "Turn workflows into reliable Codex skills"
+  default_prompt: "Turn this workflow into a repo-local skill and validate its routing, structure, and behavior."

@@ -62,3 +62,29 @@ def test_onboarding_scripts_default_to_repo_root_vault() -> None:
     ):
         module = load_module(script_dir / script_name)
         assert module.default_vault_dir() == ROOT
+
+
+def test_create_skill_validator_accepts_repo_skill() -> None:
+    module = load_module(
+        ROOT / ".codex" / "skills" / "create-skill" / "scripts" / "validate_skill.py"
+    )
+    report = module.validate_skill(ROOT / ".codex" / "skills" / "create-skill")
+    assert report.errors == []
+
+
+def test_create_skill_validator_rejects_name_mismatch(tmp_path: Path) -> None:
+    module = load_module(
+        ROOT / ".codex" / "skills" / "create-skill" / "scripts" / "validate_skill.py"
+    )
+    skill_dir = tmp_path / "expected-name"
+    skill_dir.mkdir()
+    (skill_dir / "SKILL.md").write_text(
+        "---\n"
+        "name: different-name\n"
+        "description: Create a test skill.\n"
+        "---\n\n"
+        "# Test Skill\n"
+    )
+
+    report = module.validate_skill(skill_dir)
+    assert any("does not match folder" in error for error in report.errors)

@@ -108,6 +108,7 @@ Useful starting points:
 
 - `onboarding`: first setup
 - `assistant`: ongoing work support after onboarding
+- `create-skill`: turn workflows or source material into validated repo-local skills
 - `loop`: recurring checks on a thread
 - `new-project`: create a project or experiment
 - `new-person`: create a person note

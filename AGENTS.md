@@ -80,6 +80,7 @@ Use these when relevant:
 - GitHub: `gh-address-comments`, `gh-commit`, `gh-fix-ci`, `yeet`
 - Audits: `audit-ai-code`, `audit-ai-frontend`, `audit-ai-writing`
 - Assistant: `assistant`, `onboarding`
+- Authoring: `create-skill`
 - Artifacts: `simple-html-artifact`
 - Goals: `ultragoal`
 - Automations: `loop`
