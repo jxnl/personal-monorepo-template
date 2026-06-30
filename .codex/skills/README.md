@@ -12,6 +12,7 @@ Included:
 - `audit-ai-frontend`
 - `audit-ai-writing`
 - `assistant`
+- `create-skill`
 - `gh-address-comments`
 - `gh-commit`
 - `gh-fix-ci`
